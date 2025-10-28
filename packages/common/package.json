@@ -1,0 +1,12 @@
+{
+  "name": "@ges/common",
+  "module": "src/index.ts",
+  "type": "module",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
