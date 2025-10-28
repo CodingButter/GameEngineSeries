@@ -2,6 +2,11 @@
 
 Build a **game engine + editor** in the open—using **Bun · React · TypeScript · Tailwind** and a home-rolled **ECS**—in tidy, 15-minute steps. Old-school craftsmanship, modern tools.
 
+## Episode List
+
+- 01 Working with Worktrees
+https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts
+
 ---
 
 ## What this project is
