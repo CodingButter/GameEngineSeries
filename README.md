@@ -5,7 +5,9 @@ Build a **game engine + editor** in the open—using **Bun · React · TypeScrip
 ## Episode List
 
 - 01 Working with Worktrees
-https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts
+
+  - **Branch:** https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts
+  - **Youtube:** https://youtu.be/xERoxdRW2lE
 
 ---
 
