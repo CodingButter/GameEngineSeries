@@ -1,136 +1,264 @@
-# GameEngineSeries
+# bhvr 🦫
 
-Build a **game engine + editor** in the open—using **Bun · React · TypeScript · Tailwind** and a home-rolled **ECS**—in tidy, 15-minute steps. Old-school craftsmanship, modern tools.
+![cover](https://cdn.stevedylan.dev/ipfs/bafybeievx27ar5qfqyqyud7kemnb5n2p4rzt2matogi6qttwkpxonqhra4)
 
-## Episode List
+A full-stack TypeScript monorepo starter with shared types, using Bun, Hono, Vite, and React.
 
-- 01 Working with Worktrees
+## Why bhvr?
 
-  - **Branch:** https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts
-  - **Youtube:** https://youtu.be/xERoxdRW2lE
+While there are plenty of existing app building stacks out there, many of them are either bloated, outdated, or have too much of a vendor lock-in. bhvr is built with the opinion that you should be able to deploy your client or server in any environment while also keeping type safety.
 
----
+## Features
 
-## What this project is
+- **Full-Stack TypeScript**: End-to-end type safety between client and server
+- **Shared Types**: Common type definitions shared between client and server
+- **Monorepo Structure**: Organized as a workspaces-based monorepo with Turbo for build orchestration
+- **Modern Stack**:
+  - [Bun](https://bun.sh) as the JavaScript runtime and package manager
+  - [Hono](https://hono.dev) as the backend framework
+  - [Vite](https://vitejs.dev) for frontend bundling
+  - [React](https://react.dev) for the frontend UI
+  - [Turbo](https://turbo.build) for monorepo build orchestration and caching
 
-A public, learn-by-building series that shows how to design and ship:
-
-- a **runtime engine** (loop, ECS, rendering, assets, physics-lite),
-- a **creator-friendly editor** (panels, hierarchy, inspector, gizmos),
-- a small **vertical-slice game** that proves the stack.
-
-We document decisions, keep commits small, and leave clear checkpoints so you can jump in anywhere.
-
----
-
-## Goals
-
-- **Clarity over cleverness:** readable code, explicit tradeoffs.
-- **Production posture:** DX, linting, type safety, reproducible builds.
-- **Authoring first:** editor features that make creation pleasant.
-- **Pedagogy:** every 15-min episode lands a working artifact.
-- **Traceability:** viewers can browse the exact code shown on screen.
-
----
-
-## Who this is for
-
-- **Web/game devs** who want to understand engines (not just use them).
-- **Educators & students** who prefer real repositories over slides.
-- **Toolsmiths** who like editors, pipelines, and creator UX.
-- Anyone who enjoys tidy folders and crisp commits. (You’re our people.)
-
----
-
-## What you’ll build (high level)
-
-- **Core loop & input** → deterministic updates, input mapping
-- **ECS backbone** → entities, components, systems, queries
-- **Scene & transforms** → hierarchy, local/world math, gizmos
-- **Rendering** → Canvas2D first; WebGL/WebGPU on-ramp optional
-- **Assets** → manifests, cache-busting, async loading
-- **Physics-lite** → AABB collisions, triggers
-- **Editor** → dockable panels, hierarchy, inspector, undo/redo
-- **Serialization** → scenes, prefabs, migrations
-- **UX polish** → UI/HUD, audio/events, particles/tweens
-- **Ship it** → packaging, saves, vertical slice, docs
-
----
-
-## How the repository is organized
+## Project Structure
 
 ```
-06_CODE/                 # Bun workspace (apps, packages, tooling, examples)
-04_SERIES_CONTENT/       # Epics → Chapters → Episodes (media, notes, code worktrees)
+.
+├── client/               # React frontend
+├── server/               # Hono backend
+├── shared/               # Shared TypeScript definitions
+│   └── src/types/        # Type definitions used by both client and server
+├── package.json          # Root package.json with workspaces
+└── turbo.json            # Turbo configuration for build orchestration
 ```
 
-- **apps/** → `editor`, `game`
-- **packages/** → `ecs`, `engine`, `utils`, shared `config`
-- **tooling/** → helper scripts (e.g., worktree creator)
+### Server
 
----
-
-## Branches & tags (how to find code from a specific video)
-
-Every episode gets:
-
-- **Branch:** `epNN-chMM-epPP-<episode-slug>`
-
-  - Example: `ep01-ch01-ep01-repo-layout-scripts`
-
-- **Tag (immutable snapshot when the video ships):** `pub-epNN-chMM-epPP`
-
-  - Example: `pub-ep01-ch01-ep01`
-
-### Find the branch on GitHub
-
-- Click the branch dropdown and search `epNN-chMM-epPP` (e.g., `ep05-ch02-ep01`).
-- Or visit `/branches/all` and filter by `epNN-`.
-
-### Why both branch _and_ tag?
-
-- **Branch** = living line for that episode (we may fix typos).
-- **Tag** = frozen copy that exactly matches what you saw.
-  We link both in each video description so you can choose certainty (tag) or convenience (branch).
-
-### Local worktrees (for contributors/viewers who clone)
-
-We keep a **worktree** of the code inside each episode folder so the repo doubles as a browsable time capsule:
+bhvr uses Hono as a backend API for its simplicity and massive ecosystem of plugins. If you have ever used Express then it might feel familiar. Declaring routes and returning data is easy.
 
 ```
-04_SERIES_CONTENT/.../EPISODES/EPPP-<slug>/code/   # a git worktree attached to that episode branch
+server
+├── bun.lock
+├── package.json
+├── README.md
+├── src
+│   └── index.ts
+└── tsconfig.json
 ```
 
-You don’t need these to browse on GitHub—but they’re handy offline.
+```typescript src/index.ts
+import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+import type { ApiResponse } from 'shared/dist'
 
----
+const app = new Hono()
 
-## Following along (pick your style)
+app.use(cors())
 
-- **Binge the playlist** → jump branch to branch as you watch.
-- **Hands-on** → check out the episode branch, run `bun i`, `bun run dev:editor`.
-- **Skim by topic** → explore epics and chapters; each ends with a working demo.
+app.get('/', (c) => {
+  return c.text('Hello Hono!')
+})
 
----
+app.get('/hello', async (c) => {
 
-## Values & vibe
+  const data: ApiResponse = {
+    message: "Hello BHVR!",
+    success: true
+  }
 
-- **Traditional craft:** measure twice, cut once, commit clearly.
-- **Forward-looking:** Bun workspaces, modern TS, clean editor UX.
-- **Ship small, ship often:** 15 minutes per step; progress compounds.
+  return c.json(data, { status: 200 })
+})
 
----
+export default app
+```
 
-## Contributing
+If you wanted to add a database to Hono you can do so with a multitude of Typescript libraries like [Supabase](https://supabase.com), or ORMs like [Drizzle](https://orm.drizzle.team/docs/get-started) or [Prisma](https://www.prisma.io/orm)
 
-Issues and PRs welcome. If your change relates to a specific video, target the matching **episode branch**; otherwise target `main`. Keep commits narrative and test the basics.
+### Client
 
----
+bhvr uses Vite + React Typescript template, which means you can build your frontend just as you would with any other React app. This makes it flexible to add UI components like [shadcn/ui](https://ui.shadcn.com) or routing using [React Router](https://reactrouter.com/start/declarative/installation).
 
-## License
+```
+client
+├── eslint.config.js
+├── index.html
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
 
-Code is MIT unless noted. Media (music/fonts/footage) carries its own licenses in `01_GLOBAL/legal/`.
+```typescript src/App.tsx
+import { useState } from 'react'
+import beaver from './assets/beaver.svg'
+import { ApiResponse } from 'shared'
+import './App.css'
 
----
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000"
 
-If it squeaks, we oil it. If it wobbles, we shim it. If it ships—**we party.**
+function App() {
+  const [data, setData] = useState<ApiResponse | undefined>()
+
+  async function sendRequest() {
+    try {
+      const req = await fetch(`${SERVER_URL}/hello`)
+      const res: ApiResponse = await req.json()
+      setData(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (
+    <>
+      <div>
+        <a href="https://github.com/stevedylandev/bhvr" target="_blank">
+          <img src={beaver} className="logo" alt="beaver logo" />
+        </a>
+      </div>
+      <h1>bhvr</h1>
+      <h2>Bun + Hono + Vite + React</h2>
+      <p>A typesafe fullstack monorepo</p>
+      <div className="card">
+        <button onClick={sendRequest}>
+          Call API
+        </button>
+        {data && (
+          <pre className='response'>
+            <code>
+            Message: {data.message} <br />
+            Success: {data.success.toString()}
+            </code>
+          </pre>
+        )}
+      </div>
+      <p className="read-the-docs">
+        Click the beaver to learn more
+      </p>
+    </>
+  )
+}
+
+export default App
+```
+
+### Shared
+
+The Shared package is used for anything you want to share between the Server and Client. This could be types or libraries that you use in both environments.
+
+```
+shared
+├── package.json
+├── src
+│   ├── index.ts
+│   └── types
+│       └── index.ts
+└── tsconfig.json
+```
+
+Inside the `src/index.ts` we export any of our code from the folders so it's usable in other parts of the monorepo
+
+```typescript
+export * from "./types"
+```
+
+By running `bun run dev` or `bun run build` it will compile and export the packages from `shared` so it can be used in either `client` or `server`
+
+```typescript
+import { ApiResponse } from 'shared'
+```
+
+## Getting Started
+
+### Quick Start
+
+You can start a new bhvr project using the [CLI](https://github.com/stevedylandev/create-bhvr)
+
+```bash
+bun create bhvr
+```
+
+### Installation
+
+```bash
+# Install dependencies for all workspaces
+bun install
+```
+
+### Development
+
+```bash
+# Run all workspaces in development mode with Turbo
+bun run dev
+
+# Or run individual workspaces directly
+bun run dev:client    # Run the Vite dev server for React
+bun run dev:server    # Run the Hono backend
+```
+
+### Building
+
+```bash
+# Build all workspaces with Turbo
+bun run build
+
+# Or build individual workspaces directly
+bun run build:client  # Build the React frontend
+bun run build:server  # Build the Hono backend
+```
+
+### Additional Commands
+
+```bash
+# Lint all workspaces
+bun run lint
+
+# Type check all workspaces
+bun run type-check
+
+# Run tests across all workspaces
+bun run test
+```
+
+### Deployment
+
+Deplying each piece is very versatile and can be done numerous ways, and exploration into automating these will happen at a later date. Here are some references in the meantime.
+
+**Client**
+- [Orbiter](https://orbiter.host)
+- [GitHub Pages](https://vite.dev/guide/static-deploy.html#github-pages)
+- [Netlify](https://vite.dev/guide/static-deploy.html#netlify)
+- [Cloudflare Pages](https://vite.dev/guide/static-deploy.html#cloudflare-pages)
+
+**Server**
+- [Cloudflare Worker](https://gist.github.com/stevedylandev/4aa1fc569bcba46b7169193c0498d0b3)
+- [Bun](https://hono.dev/docs/getting-started/bun)
+- [Node.js](https://hono.dev/docs/getting-started/nodejs)
+
+## Type Sharing
+
+Types are automatically shared between the client and server thanks to the shared package and TypeScript path aliases. You can import them in your code using:
+
+```typescript
+import { ApiResponse } from 'shared/types';
+```
+
+## Learn More
+
+- [Bun Documentation](https://bun.sh/docs)
+- [Vite Documentation](https://vitejs.dev/guide/)
+- [React Documentation](https://react.dev/learn)
+- [Hono Documentation](https://hono.dev/docs)
+- [Turbo Documentation](https://turbo.build/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
