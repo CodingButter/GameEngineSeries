@@ -1,5 +1,5 @@
 {
-  "name": "@ges/renderer",
+  "name": "@ges/engine",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

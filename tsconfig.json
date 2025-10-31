@@ -13,7 +13,9 @@
       "@server/*": ["./server/src/*"],
       "@client/*": ["./client/src/*"],
       "@shared/*": ["./shared/src/*"],
-      "@renderer/*": ["./packages/renderer/src/*"]
+      "@ges/core/*": ["./packages/core/src/*"],
+      "@ges/engine/*": ["./packages/engine/src/*"],
+      "@ges/renderer/*": ["./packages/renderer/src/*"]
     },
 
     // Module resolution
