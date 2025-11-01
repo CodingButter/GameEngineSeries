@@ -1,90 +1,143 @@
-# 🧩 Built from Scratch: 2D Game Engine (Tutorial Series)
+# 🧩 Built From Scratch: 2D Game Engine (Tutorial Series)
 
 ### 🎬 Overview
 
-This repository follows along with the **YouTube series _Built from Scratch: 2D Game Engine_**, where we’re creating a simple but complete 2D game engine **from the ground up**.
+Welcome to the **Built From Scratch: 2D Game Engine** series — a hands-on YouTube course where we build a modular, browser-based 2D game engine step by step.
 
-Each episode is under **30 minutes**, focused on clarity and understanding — not speed, not polish, not “production-ready.”
-Our goal is to **build the foundation**, wire everything correctly, and ensure every line of code has a clear purpose before we add complexity.
+Each episode focuses on understanding **why** things are built the way they are.  
+No rushed coding, no copy-paste boilerplate — just practical structure, clean logic, and gradual complexity.  
 
-We’re using **BHVR** — short for **Bun · Hono · Vite · React** — not as the engine itself, but as our **development conduit**.
-Think of BHVR as the **cable system** that connects all the moving parts. It’s what lets our ideas communicate, our systems evolve, and our future features plug in cleanly.
-
----
-
-## ⚙️ Current Episode — Renderer Foundations
-
-In the most recent episode, we:
-
-- **Migrated** from a manually wired workspace to a **BHVR-powered monorepo**.
-- **Structured** our packages and folders to prepare for future engine modules.
-- **Built** the first basic renderer — just enough to draw a square on screen.
-
-This episode was about connection and confirmation: proving that our BHVR setup can power the engine’s first visual output.
+We’re using the **BHVR stack** — **Bun · Hono · Vite · React** — as our foundation.  
+BHVR isn’t the engine; it’s the **development conduit** that keeps everything fast, modular, and connected.
 
 ---
 
-## 🧭 Roadmap (Episodes 1–7)
+## 🧭 Series Roadmap
 
-| Episode | Topic                        | Duration | Purpose                                                     |
-| :-----: | :--------------------------- | :------: | :---------------------------------------------------------- |
-|  **1**  | Manual Setup                 | <30 min  | Build everything by hand to understand the wiring.          |
-|  **2**  | BHVR Integration _(current)_ | <30 min  | Transition to BHVR; create our first working renderer.      |
-|  **3**  | Core Tick & Scene Management | <30 min  | Add the heartbeat — update + render loop.                   |
-|  **4**  | ECS Foundations              | <30 min  | Build the entity and component architecture.                |
-|  **5**  | ECS Systems                  | <30 min  | Connect logic and behavior to the engine tick.              |
-|  **6**  | Editor UI Setup              | <30 min  | Build the editor interface using React.                     |
-|  **7**  | Editor Interaction           | <30 min  | Add selection, input, and live connections between systems. |
+| Episode | Title | Branch | YouTube |
+|:--:|:--|:--|:--|
+| **1** | Working with Workspaces | [ep01-ch01-ep01-repo-layout-and-scripts](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts) | [Watch on YouTube](https://youtu.be/xERoxdRW2lE) |
+| **2** | Better Foundations & A Simple Renderer | [ep01-ch01-ep-02-foundations-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep-02-foundations-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
+| **3** | Core & Engine Package | [ep01-ch01-ep03-core-loops-and-state-management](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep03-core-loops-and-state-management) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
 
-By the end of Episode 7, everything will be wired — the renderer, tick, ECS, and editor — ready to power all future systems we’ll build.
+**Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
+**Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+
+---
+
+## ⚙️ Current Status
+
+We now have a working **core** and **engine** package driving the **React editor** through a clean modular structure:
+
+```
+
+editor → core → engine → renderer
+
+````
+
+- The **renderer** draws frames to the canvas.  
+- The **engine** handles timing, delta updates, and control flow.  
+- The **core** ties everything together into a unified importable package.
+
+The project has officially moved from a static renderer to a functioning engine loop with live FPS and delta-based updates.
+
+---
+
+## 🧰 Tech Stack (BHVR)
+
+| Tool | Role |
+|------|------|
+| **Bun** | Runtime and package manager — ultra-fast workspace management |
+| **Hono** | Lightweight HTTP framework for internal dev APIs |
+| **Vite** | Modern build tool with instant hot reload |
+| **React** | Used for the editor UI and debug overlays |
+| **TypeScript** | Strong typing and interface contracts across packages |
+
+---
+
+## 🛠️ Quick Start
+
+Clone the repo and run the latest version of the engine/editor:
+
+```bash
+git clone https://github.com/CodingButter/GameEngineSeries.git
+cd GameEngineSeries
+bun install
+bun run dev
+````
+
+This launches the **editor app**, automatically linking all workspace packages.
+You’ll see the current demo scene running inside the browser, powered by the latest version of the engine.
+
+---
+
+## 🧩 Project Structure
+
+```
+.
+├─ apps/
+│  └─ editor/             # React-based game editor
+├─ packages/
+│  ├─ core/               # Central export hub (engine, renderer, types)
+│  ├─ engine/             # Game loop (update + render)
+│  ├─ renderer/           # Canvas2D renderer
+│  ├─ ecs/                # Entity Component System (coming soon)
+│  └─ config/             # Shared configs (tsconfig, lint, etc.)
+└─ tsconfig.json
+```
 
 ---
 
 ## 🧠 Series Philosophy
 
-> “Focus on the structure.
-> The features come later.”
+> “Focus on the structure. The features come later.”
 
-We’re not optimizing yet.
-We’re not polishing yet.
-We’re building **a clean, understandable conduit** for all future features — physics, input, sound, networking, you name it.
+We’re not optimizing or chasing polish yet.
+We’re building **a clear foundation** — easy to read, reason about, and expand later.
 
-Every episode answers a single question:
+Each episode answers one question:
 
-> _What part of the code does what?_
+> *What part of the code does what?*
 
-That’s how we’ll grow an engine that’s easy to reason about, expand, and improve — one wire at a time.
+That’s how we’ll grow this engine into something powerful, understandable, and fun to build.
 
 ---
 
-## 🧰 BHVR Stack
+## 🛣️ Upcoming Episodes
 
-| Tool      | Role                                                        |
-| --------- | ----------------------------------------------------------- |
-| **Bun**   | Runtime and package manager — our lightning-fast backbone.  |
-| **Hono**  | Lightweight dev server for API and tool wiring.             |
-| **Vite**  | Handles hot reload, bundling, and efficient feedback loops. |
-| **React** | Powers our editor UI and debug overlays.                    |
+* **Episode 4:** ECS Foundations
 
-BHVR keeps our workflow smooth and connected — the cables beneath the surface that make iteration fast and clean.
+  * Build the Entity Component System and define the base architecture.
+* **Episode 5:** ECS Systems
 
----
+  * Connect logic and data to the core tick.
+* **Episode 6:** Editor UI Setup
 
-## 🛣️ Next Episode Preview
+  * Add real interface panels, layout, and debugging.
+* **Episode 7:** Editor Interaction
 
-In the upcoming episode:
-
-1. We’ll build the **core tick and render loop** — the heartbeat of the engine.
-2. Introduce **simple scene management**, allowing us to load and swap what’s on screen.
-3. Begin routing the renderer through the tick for consistent timing and updates.
-
-By the end, the engine won’t just display a square — it’ll **run** one.
+  * Add input, selection, and live entity updates.
 
 ---
 
-## 🧑‍💻 Developer Notes
+## 💬 Feedback & Community
 
-- Keep the wiring clear and logical.
-- Avoid optimization until the structure is complete.
-- Always ask, _“What part of this connects to what?”_
-- BHVR is our conduit — not the engine, but the system that powers our growth.
+I’ve been coding for over 20 years, but I’m still learning every day.
+This project is about sharing the process — the mistakes, the rewrites, and the small wins along the way.
+
+If you’re following along, **like, share, and subscribe** on YouTube to support the series,
+or open an issue on GitHub if you spot something that can be improved.
+
+**Channel:** [CodingButter](https://youtube.com/@codingbutter)
+**Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+
+---
+
+### 📄 License
+
+This project and its code are provided for **educational and open-source learning purposes**.
+You’re welcome to fork, remix, and expand it — just keep it open and share what you learn.
+
+---
+
+**Main Repo:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
