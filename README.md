@@ -1,148 +1,143 @@
-# 🧩 Built from Scratch: 2D Game Engine (Tutorial Series)
+# 🧩 Built From Scratch: 2D Game Engine (Tutorial Series)
 
 ### 🎬 Overview
 
-This repository follows along with the **YouTube series _Built from Scratch: 2D Game Engine_**, where we’re building a modular, browser-based 2D game engine from the ground up — one clean system at a time.
+Welcome to the **Built From Scratch: 2D Game Engine** series — a hands-on YouTube course where we build a modular, browser-based 2D game engine step by step.
 
-Each episode is short (under **30 minutes**) and focused on clarity, not perfection.  
-The goal is to show how real systems are built: simple, transparent, and adaptable.
+Each episode focuses on understanding **why** things are built the way they are.  
+No rushed coding, no copy-paste boilerplate — just practical structure, clean logic, and gradual complexity.  
 
-We’re using **BHVR** — short for **Bun · Hono · Vite · React** — as our foundation for rapid iteration.  
-It’s not the engine itself, but the infrastructure that connects all the moving parts.
-
----
-
-## ⚙️ Current Episode — Core Loops & Engine Integration
-
-🎥 Watch the episode:  
-**[YouTube – Episode 3: Core Loops & Engine Integration](https://www.youtube.com/watch?v=oHxFAvvBBtY)**
-
-In this episode, we gave our engine a real **heartbeat**.  
-We built two key packages — **@ges/core** and **@ges/engine** — and connected them to the editor through the renderer.  
-This setup turns the project from a visual demo into a functioning engine loop with real delta-time updates.
-
-### Highlights
-
-- Created a **core package** that unifies all engine modules under one namespace
-- Built the **engine package**, defining its update and render loops
-- Implemented consistent timing using **delta time** and a fixed tick rate
-- Added frame-rate smoothing to avoid CPU drift
-- Hooked the **engine** into the **React editor** and displayed live FPS
-- Verified the new modular dependency chain: `editor → core → engine → renderer`
-
-This episode marks the transition from “drawing frames” to **running frames** — the engine now drives the scene.
+We’re using the **BHVR stack** — **Bun · Hono · Vite · React** — as our foundation.  
+BHVR isn’t the engine; it’s the **development conduit** that keeps everything fast, modular, and connected.
 
 ---
 
-## 🧭 Roadmap (Episodes 1–7)
+## 🧭 Series Roadmap
 
-| Episode | Topic                                      | Duration | Purpose                                                 |
-| :-----: | :----------------------------------------- | :------: | :------------------------------------------------------ |
-|  **1**  | Manual Setup                               | <30 min  | Build everything by hand to understand the wiring.      |
-|  **2**  | BHVR Integration                           | <30 min  | Transition to BHVR; create our first working renderer.  |
-|  **3**  | Core Tick & Engine Integration _(current)_ | <30 min  | Add the heartbeat — consistent update + render loops.   |
-|  **4**  | ECS Foundations                            | <30 min  | Build the entity and component architecture.            |
-|  **5**  | ECS Systems                                | <30 min  | Connect logic and behavior to the engine tick.          |
-|  **6**  | Editor UI Setup                            | <30 min  | Build the editor interface using React.                 |
-|  **7**  | Editor Interaction                         | <30 min  | Add selection, input, and live updates between systems. |
+| Episode | Title | Branch | YouTube |
+|:--:|:--|:--|:--|
+| **1** | Working with Workspaces | [ep01-ch01-ep01-repo-layout-and-scripts](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts) | [Watch on YouTube](https://youtu.be/xERoxdRW2lE) |
+| **2** | Better Foundations & A Simple Renderer | [ep01-ch01-ep-02-foundations-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep-02-foundations-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
+| **3** | Core & Engine Package | [ep01-ch01-ep03-core-loops-and-state-management](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep03-core-loops-and-state-management) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
 
-By the end of Episode 7, the engine, editor, ECS, and renderer will be fully wired together and ready to evolve.
+**Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
+**Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
 
 ---
 
-## 🧠 Series Philosophy
+## ⚙️ Current Status
 
-> “Focus on the structure.  
-> The features come later.”
+We now have a working **core** and **engine** package driving the **React editor** through a clean modular structure:
 
-We’re not chasing optimization yet — we’re building a clear, maintainable foundation.  
-Every system connects logically, every line has a purpose, and every improvement builds on solid ground.
+```
 
-> _What part of the code does what?_  
-> That’s the question each episode answers.
+editor → core → engine → renderer
+
+````
+
+- The **renderer** draws frames to the canvas.  
+- The **engine** handles timing, delta updates, and control flow.  
+- The **core** ties everything together into a unified importable package.
+
+The project has officially moved from a static renderer to a functioning engine loop with live FPS and delta-based updates.
 
 ---
 
-## 🧰 BHVR Stack
+## 🧰 Tech Stack (BHVR)
 
-| Tool      | Role                                                       |
-| --------- | ---------------------------------------------------------- |
-| **Bun**   | Runtime and package manager for fast builds and workspaces |
-| **Hono**  | Lightweight HTTP framework for tooling and dev servers     |
-| **Vite**  | Instant hot reload and efficient bundling                  |
-| **React** | Editor UI and live engine overlays                         |
-
-BHVR keeps the workflow fast, modular, and transparent — the cables beneath the surface that make iteration effortless.
+| Tool | Role |
+|------|------|
+| **Bun** | Runtime and package manager — ultra-fast workspace management |
+| **Hono** | Lightweight HTTP framework for internal dev APIs |
+| **Vite** | Modern build tool with instant hot reload |
+| **React** | Used for the editor UI and debug overlays |
+| **TypeScript** | Strong typing and interface contracts across packages |
 
 ---
 
 ## 🛠️ Quick Start
 
-Clone the repo and check out this episode’s branch:
+Clone the repo and run the latest version of the engine/editor:
 
 ```bash
 git clone https://github.com/CodingButter/GameEngineSeries.git
 cd GameEngineSeries
-git checkout ep01-ch01-ep03-core-loops-and-state-management
-```
-
-Install dependencies with **Bun**:
-
-```bash
 bun install
-```
-
-Then start the development server:
-
-```bash
 bun run dev
-```
+````
 
-This will launch the **editor** app and automatically link all workspace packages
-(`core`, `engine`, and `renderer`) through the Bun workspace system.
-
-When the editor opens in your browser, you’ll see a moving object with a live FPS counter —
-powered by the newly built **Engine class** and **update/render loop**.
+This launches the **editor app**, automatically linking all workspace packages.
+You’ll see the current demo scene running inside the browser, powered by the latest version of the engine.
 
 ---
 
-## 🛣️ Next Episode Preview
-
-In the next episode, we’ll:
-
-1. Build the **foundation for an ECS (Entity Component System)**
-2. Connect entities and components to the engine tick
-3. Start managing game state and scene logic through data instead of hardcoded updates
-
-The goal: let the engine **simulate**, not just render.
-
----
-
-## 🧑‍💻 Developer Notes
-
-- Keep the core lightweight and dependency-free.
-- Use strong TypeScript types for contracts between packages.
-- Avoid micro-optimizations until the full architecture is proven.
-- Every change should make the system **clearer**, not just more complex.
-
----
-
-### 📁 Repo Structure (as of Episode 3)
+## 🧩 Project Structure
 
 ```
 .
 ├─ apps/
-│  └─ editor/             # React editor connected to the engine
+│  └─ editor/             # React-based game editor
 ├─ packages/
-│  ├─ core/               # Central hub (exports engine, renderer, types)
-│  ├─ engine/             # Core update & render loop
-│  ├─ renderer/           # Canvas2D rendering package
-│  └─ config/             # Shared TS configs and workspace settings
+│  ├─ core/               # Central export hub (engine, renderer, types)
+│  ├─ engine/             # Game loop (update + render)
+│  ├─ renderer/           # Canvas2D renderer
+│  ├─ ecs/                # Entity Component System (coming soon)
+│  └─ config/             # Shared configs (tsconfig, lint, etc.)
 └─ tsconfig.json
 ```
 
 ---
 
-**Main Repo:** [CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
-**Branch:** `ep01-ch01-ep03-core-loops-and-state-management`
-**Series Playlist:** [YouTube Playlist](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+## 🧠 Series Philosophy
+
+> “Focus on the structure. The features come later.”
+
+We’re not optimizing or chasing polish yet.
+We’re building **a clear foundation** — easy to read, reason about, and expand later.
+
+Each episode answers one question:
+
+> *What part of the code does what?*
+
+That’s how we’ll grow this engine into something powerful, understandable, and fun to build.
+
+---
+
+## 🛣️ Upcoming Episodes
+
+* **Episode 4:** ECS Foundations
+
+  * Build the Entity Component System and define the base architecture.
+* **Episode 5:** ECS Systems
+
+  * Connect logic and data to the core tick.
+* **Episode 6:** Editor UI Setup
+
+  * Add real interface panels, layout, and debugging.
+* **Episode 7:** Editor Interaction
+
+  * Add input, selection, and live entity updates.
+
+---
+
+## 💬 Feedback & Community
+
+I’ve been coding for over 20 years, but I’m still learning every day.
+This project is about sharing the process — the mistakes, the rewrites, and the small wins along the way.
+
+If you’re following along, **like, share, and subscribe** on YouTube to support the series,
+or open an issue on GitHub if you spot something that can be improved.
+
+**Channel:** [CodingButter](https://youtube.com/@codingbutter)
+**Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+
+---
+
+### 📄 License
+
+This project and its code are provided for **educational and open-source learning purposes**.
+You’re welcome to fork, remix, and expand it — just keep it open and share what you learn.
+
+---
+
+**Main Repo:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
