@@ -5,7 +5,7 @@
 Welcome to the **Built From Scratch: 2D Game Engine** series — a hands-on YouTube course where we build a modular, browser-based 2D game engine step by step.
 
 Each episode focuses on understanding **why** things are built the way they are.  
-No rushed coding, no copy-paste boilerplate — just practical structure, clean logic, and gradual complexity.  
+No rushed coding, no copy-paste boilerplate — just practical structure, clean logic, and steady progress.
 
 We’re using the **BHVR stack** — **Bun · Hono · Vite · React** — as our foundation.  
 BHVR isn’t the engine; it’s the **development conduit** that keeps everything fast, modular, and connected.
@@ -27,7 +27,8 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 
 ## ⚙️ Current Status
 
-We now have a working **core** and **engine** package driving the **React editor** through a clean modular structure:
+**Main** is a landing branch and may differ from per-episode branches.  
+As of Episode 3, the series introduces **core** and **engine** packages (see the Ep3 branch) that drive the editor through a clean pipeline:
 
 ```
 
@@ -36,10 +37,8 @@ editor → core → engine → renderer
 ````
 
 - The **renderer** draws frames to the canvas.  
-- The **engine** handles timing, delta updates, and control flow.  
-- The **core** ties everything together into a unified importable package.
-
-The project has officially moved from a static renderer to a functioning engine loop with live FPS and delta-based updates.
+- The **engine** manages timing, delta updates, and control flow.  
+- The **core** provides a single import surface for engine modules.
 
 ---
 
@@ -50,14 +49,14 @@ The project has officially moved from a static renderer to a functioning engine 
 | **Bun** | Runtime and package manager — ultra-fast workspace management |
 | **Hono** | Lightweight HTTP framework for internal dev APIs |
 | **Vite** | Modern build tool with instant hot reload |
-| **React** | Used for the editor UI and debug overlays |
+| **React** | Editor UI and debug overlays |
 | **TypeScript** | Strong typing and interface contracts across packages |
 
 ---
 
 ## 🛠️ Quick Start
 
-Clone the repo and run the latest version of the engine/editor:
+Clone the repo and run the dev environment:
 
 ```bash
 git clone https://github.com/CodingButter/GameEngineSeries.git
@@ -66,25 +65,27 @@ bun install
 bun run dev
 ````
 
-This launches the **editor app**, automatically linking all workspace packages.
-You’ll see the current demo scene running inside the browser, powered by the latest version of the engine.
+This starts the editor and links workspace packages (client/server/shared/packages) using the current main setup.
+Top-level directories you’ll see on **main**: `client/`, `server/`, `shared/`, and `packages/` (renderer lives here; other modules land on episode branches). ([GitHub][1])
 
 ---
 
-## 🧩 Project Structure
+## 🧩 Project Structure (main)
 
 ```
 .
-├─ apps/
-│  └─ editor/             # React-based game editor
+├─ client/                 # React-based editor/frontend
+├─ server/                 # Hono server for tooling/APIs
+├─ shared/                 # Shared types & utilities for client/server
 ├─ packages/
-│  ├─ core/               # Central export hub (engine, renderer, types)
-│  ├─ engine/             # Game loop (update + render)
-│  ├─ renderer/           # Canvas2D renderer
-│  ├─ ecs/                # Entity Component System (coming soon)
-│  └─ config/             # Shared configs (tsconfig, lint, etc.)
-└─ tsconfig.json
+│  └─ renderer/            # Canvas 2D renderer (episode 2)
+├─ package.json            # Workspace + scripts
+├─ bun.lock
+├─ tsconfig.json
+└─ turbo.json
 ```
+
+This structure is visible at the repo root on main. ([GitHub][1])
 
 ---
 
@@ -92,8 +93,7 @@ You’ll see the current demo scene running inside the browser, powered by the l
 
 > “Focus on the structure. The features come later.”
 
-We’re not optimizing or chasing polish yet.
-We’re building **a clear foundation** — easy to read, reason about, and expand later.
+We’re not optimizing for polish yet. We’re building **a clear foundation** — easy to read, reason about, and extend.
 
 Each episode answers one question:
 
@@ -105,27 +105,19 @@ That’s how we’ll grow this engine into something powerful, understandable, a
 
 ## 🛣️ Upcoming Episodes
 
-* **Episode 4:** ECS Foundations
-
-  * Build the Entity Component System and define the base architecture.
-* **Episode 5:** ECS Systems
-
-  * Connect logic and data to the core tick.
-* **Episode 6:** Editor UI Setup
-
-  * Add real interface panels, layout, and debugging.
-* **Episode 7:** Editor Interaction
-
-  * Add input, selection, and live entity updates.
+* **Episode 4:** ECS Foundations — define the base Entity/Component model
+* **Episode 5:** ECS Systems — connect behavior to the tick
+* **Episode 6:** Editor UI Setup — panels, layout, and debugging
+* **Episode 7:** Editor Interaction — input, selection, and live updates
 
 ---
 
 ## 💬 Feedback & Community
 
-I’ve been coding for over 20 years, but I’m still learning every day.
-This project is about sharing the process — the mistakes, the rewrites, and the small wins along the way.
+I’ve been coding for over 20 years, and I’m still learning every day.
+This project is about sharing the process — the mistakes, the rewrites, and the small wins.
 
-If you’re following along, **like, share, and subscribe** on YouTube to support the series,
+If you’re following along, **like, share, and subscribe** on YouTube,
 or open an issue on GitHub if you spot something that can be improved.
 
 **Channel:** [CodingButter](https://youtube.com/@codingbutter)
