@@ -1,3 +1,3 @@
 export * from "./types"
-export * from "@ges/renderer"
-export * from "@ges/engine"
+export * from "@jleelove/ges-renderer"
+export * from "@jleelove/ges-engine"

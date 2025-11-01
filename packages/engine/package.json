@@ -1,13 +1,32 @@
 {
-  "name": "@ges/engine",
-  "version": "0.0.1",
+  "name": "@jleelove/ges-engine",
+  "version": "0.1.0",
+  "description": "Game loop engine for the GameEngineSeries - handles separate update and render loops with configurable tick and frame rates",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": "CodingButter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingButter/GameEngineSeries.git",
+    "directory": "packages/engine"
+  },
+  "keywords": [
+    "game-engine",
+    "game-loop",
+    "update-loop",
+    "render-loop",
+    "gamedev",
+    "typescript"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

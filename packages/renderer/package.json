@@ -1,13 +1,32 @@
 {
-  "name": "@ges/renderer",
-  "version": "0.0.1",
+  "name": "@jleelove/ges-renderer",
+  "version": "0.1.0",
+  "description": "Canvas 2D renderer for the GameEngineSeries - provides basic drawing primitives and rendering capabilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": "CodingButter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingButter/GameEngineSeries.git",
+    "directory": "packages/renderer"
+  },
+  "keywords": [
+    "game-engine",
+    "2d",
+    "canvas",
+    "renderer",
+    "gamedev",
+    "typescript"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

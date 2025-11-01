@@ -18,7 +18,7 @@
       "name": "client",
       "version": "0.0.1",
       "dependencies": {
-        "@ges/core": "workspace:*",
+        "@jleelove/ges-core": "workspace:*",
         "@radix-ui/react-slot": "^1.2.3",
         "@tailwindcss/vite": "^4.1.10",
         "@tanstack/react-query": "^5.90.5",
@@ -49,26 +49,26 @@
       },
     },
     "packages/core": {
-      "name": "@ges/core",
-      "version": "0.0.1",
+      "name": "@jleelove/ges-core",
+      "version": "0.1.0",
       "dependencies": {
-        "@ges/engine": "workspace:*",
-        "@ges/renderer": "workspace:*",
+        "@jleelove/ges-engine": "^0.1.0",
+        "@jleelove/ges-renderer": "^0.1.0",
       },
       "devDependencies": {
         "typescript": "^5.8.3",
       },
     },
     "packages/engine": {
-      "name": "@ges/engine",
-      "version": "0.0.1",
+      "name": "@jleelove/ges-engine",
+      "version": "0.1.0",
       "devDependencies": {
         "typescript": "^5.8.3",
       },
     },
     "packages/renderer": {
-      "name": "@ges/renderer",
-      "version": "0.0.1",
+      "name": "@jleelove/ges-renderer",
+      "version": "0.1.0",
       "devDependencies": {
         "typescript": "^5.8.3",
       },
@@ -201,12 +201,6 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.0", "", { "dependencies": { "@eslint/core": "^0.16.0", "levn": "^0.4.1" } }, "sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A=="],
 
-    "@ges/core": ["@ges/core@workspace:packages/core"],
-
-    "@ges/engine": ["@ges/engine@workspace:packages/engine"],
-
-    "@ges/renderer": ["@ges/renderer@workspace:packages/renderer"],
-
     "@humanfs/core": ["@humanfs/core@0.19.1", "", {}, "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="],
 
     "@humanfs/node": ["@humanfs/node@0.16.7", "", { "dependencies": { "@humanfs/core": "^0.19.1", "@humanwhocodes/retry": "^0.4.0" } }, "sha512-/zUx+yOsIrG4Y43Eh2peDeKCxlRt/gET6aHfaKpuq267qXdYDFViVHfMaLyygZOnl0kGWxFIgsBy8QFuTLUXEQ=="],
@@ -214,6 +208,12 @@
     "@humanwhocodes/module-importer": ["@humanwhocodes/module-importer@1.0.1", "", {}, "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA=="],
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
+
+    "@jleelove/ges-core": ["@jleelove/ges-core@workspace:packages/core"],
+
+    "@jleelove/ges-engine": ["@jleelove/ges-engine@workspace:packages/engine"],
+
+    "@jleelove/ges-renderer": ["@jleelove/ges-renderer@workspace:packages/renderer"],
 
     "@jridgewell/gen-mapping": ["@jridgewell/gen-mapping@0.3.13", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.0", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA=="],
 

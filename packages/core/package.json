@@ -1,8 +1,25 @@
 {
-  "name": "@ges/core",
-  "version": "0.0.1",
+  "name": "@jleelove/ges-core",
+  "version": "0.1.0",
+  "description": "Complete 2D game engine package - combines renderer and engine from the GameEngineSeries tutorial. Build browser-based games with TypeScript!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": "CodingButter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingButter/GameEngineSeries.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "game-engine",
+    "2d",
+    "canvas",
+    "gamedev",
+    "typescript",
+    "browser-game",
+    "game-loop"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -22,10 +39,13 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@ges/renderer": "workspace:*",
-    "@ges/engine": "workspace:*"
+    "@jleelove/ges-renderer": "^0.1.0",
+    "@jleelove/ges-engine": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

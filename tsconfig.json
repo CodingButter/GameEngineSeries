@@ -13,9 +13,9 @@
       "@server/*": ["./server/src/*"],
       "@client/*": ["./client/src/*"],
       "@shared/*": ["./shared/src/*"],
-      "@ges/core/*": ["./packages/core/src/*"],
-      "@ges/engine/*": ["./packages/engine/src/*"],
-      "@ges/renderer/*": ["./packages/renderer/src/*"]
+      "@jleelove/ges-core/*": ["./packages/core/src/*"],
+      "@jleelove/ges-engine/*": ["./packages/engine/src/*"],
+      "@jleelove/ges-renderer/*": ["./packages/renderer/src/*"]
     },
 
     // Module resolution
