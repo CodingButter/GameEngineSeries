@@ -1,0 +1,32 @@
+{
+  "name": "@ges/ecs",
+  "version": "0.1.0",
+  "description": "ECS for the GameEngineSeries - Entity Component System",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "CodingButter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingButter/GameEngineSeries.git",
+    "directory": "packages/ecs"
+  },
+  "keywords": [
+    "game-engine",
+    "game-loop",
+    "update-loop",
+    "render-loop",
+    "gamedev",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

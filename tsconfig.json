@@ -15,6 +15,7 @@
       "@shared/*": ["./shared/src/*"],
       "@ges/core/*": ["./packages/core/src/*"],
       "@ges/engine/*": ["./packages/engine/src/*"],
+      "@ges/ecs/*": ["./packages/ecs/src/*"],
       "@ges/renderer/*": ["./packages/renderer/src/*"]
     },
 

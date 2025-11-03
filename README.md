@@ -19,6 +19,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 | **1** | Working with Workspaces | [ep01-ch01-ep01-repo-layout-and-scripts](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts) | [Watch on YouTube](https://youtu.be/xERoxdRW2lE) |
 | **2** | Better Foundations & A Simple Renderer | [ep01-ch01-ep-02-foundations-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep-02-foundations-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
 | **3** | Core & Engine Package | [ep01-ch01-ep03-core-loops-and-state-management](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep03-core-loops-and-state-management) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
+| **4** | Entity Component System | [ep01-ch01-ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
 
 **Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
@@ -27,18 +28,21 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 
 ## ⚙️ Current Status
 
-**Main** is a landing branch and may differ from per-episode branches.  
-As of Episode 3, the series introduces **core** and **engine** packages (see the Ep3 branch) that drive the editor through a clean pipeline:
+**Main** is a landing branch and may differ from per-episode branches.
+As of Episode 4, the series introduces the **Entity Component System (ECS)** architecture that enables flexible, data-driven game objects:
 
 ```
 
 editor → core → engine → renderer
+              ↓
+             ecs → world → entities/components/systems
 
 ````
 
-- The **renderer** draws frames to the canvas.  
-- The **engine** manages timing, delta updates, and control flow.  
-- The **core** provides a single import surface for engine modules.
+- The **renderer** draws frames to the canvas.
+- The **engine** manages timing, delta updates, and control flow.
+- The **ecs** provides the World class for managing entities, components, and systems.
+- The **core** provides a single import surface for all engine modules.
 
 ---
 
@@ -78,7 +82,10 @@ Top-level directories you’ll see on **main**: `client/`, `server/`, `shared/`,
 ├─ server/                 # Hono server for tooling/APIs
 ├─ shared/                 # Shared types & utilities for client/server
 ├─ packages/
-│  └─ renderer/            # Canvas 2D renderer (episode 2)
+│  ├─ renderer/            # Canvas 2D renderer (episode 2)
+│  ├─ engine/              # Game loop & timing system (episode 3)
+│  ├─ ecs/                 # Entity Component System (episode 4)
+│  └─ core/                # Unified export surface (episode 3+)
 ├─ package.json            # Workspace + scripts
 ├─ bun.lock
 ├─ tsconfig.json
@@ -105,10 +112,10 @@ That’s how we’ll grow this engine into something powerful, understandable, a
 
 ## 🛣️ Upcoming Episodes
 
-* **Episode 4:** ECS Foundations — define the base Entity/Component model
-* **Episode 5:** ECS Systems — connect behavior to the tick
-* **Episode 6:** Editor UI Setup — panels, layout, and debugging
-* **Episode 7:** Editor Interaction — input, selection, and live updates
+* **Episode 5:** Component Types & Systems — Transform, Velocity, Sprite components with movement and rendering
+* **Episode 6:** Input System — keyboard and mouse handling for game interaction
+* **Episode 7:** Editor UI Setup — panels, layout, and debugging
+* **Episode 8:** Editor Interaction — input, selection, and live entity visualization
 
 ---
 

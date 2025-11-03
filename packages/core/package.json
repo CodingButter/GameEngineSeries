@@ -32,6 +32,10 @@
     "./engine": {
       "types": "./dist/engine.d.ts",
       "import": "./dist/engine.js"
+    },
+    "./ecs": {
+      "types": "./dist/ecs.d.ts",
+      "import": "./dist/ecs.js"
     }
   },
   "scripts": {
@@ -39,8 +43,9 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@ges/renderer": "^0.1.0",
-    "@ges/engine": "^0.1.0"
+    "@ges/renderer": "workspace:*",
+    "@ges/engine": "workspace:*",
+    "@ges/ecs":"workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
