@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
-import { makeCanvasRenderer, type Renderer } from "@jleelove/ges-core/renderer"
-import { Engine } from "@jleelove/ges-core/engine"
-import type { updateFN, renderFN, EngineProps } from "@jleelove/ges-core/engine"
+import { makeCanvasRenderer, type Renderer } from "@ges/core/renderer"
+import { Engine } from "@ges/core/engine"
+import type { updateFN, renderFN, EngineProps } from "@ges/core/engine"
 
 function Editor() {
   const canvasRef = useRef<HTMLCanvasElement>(null)

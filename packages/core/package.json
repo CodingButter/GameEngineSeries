@@ -1,5 +1,5 @@
 {
-  "name": "@jleelove/ges-core",
+  "name": "@ges/core",
   "version": "0.1.0",
   "description": "Complete 2D game engine package - combines renderer and engine from the GameEngineSeries tutorial. Build browser-based games with TypeScript!",
   "main": "dist/index.js",
@@ -39,8 +39,8 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@jleelove/ges-renderer": "^0.1.0",
-    "@jleelove/ges-engine": "^0.1.0"
+    "@ges/renderer": "^0.1.0",
+    "@ges/engine": "^0.1.0"
   },
   "devDependencies": {
     "typescript": "^5.8.3"

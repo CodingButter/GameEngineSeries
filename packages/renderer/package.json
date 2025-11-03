@@ -1,5 +1,5 @@
 {
-  "name": "@jleelove/ges-renderer",
+  "name": "@ges/renderer",
   "version": "0.1.0",
   "description": "Canvas 2D renderer for the GameEngineSeries - provides basic drawing primitives and rendering capabilities",
   "main": "dist/index.js",

@@ -18,7 +18,7 @@
       "name": "client",
       "version": "0.0.1",
       "dependencies": {
-        "@jleelove/ges-core": "workspace:*",
+        "@ges/core": "workspace:*",
         "@radix-ui/react-slot": "^1.2.3",
         "@tailwindcss/vite": "^4.1.10",
         "@tanstack/react-query": "^5.90.5",
@@ -49,25 +49,25 @@
       },
     },
     "packages/core": {
-      "name": "@jleelove/ges-core",
+      "name": "@ges/core",
       "version": "0.1.0",
       "dependencies": {
-        "@jleelove/ges-engine": "^0.1.0",
-        "@jleelove/ges-renderer": "^0.1.0",
+        "@ges/engine": "^0.1.0",
+        "@ges/renderer": "^0.1.0",
       },
       "devDependencies": {
         "typescript": "^5.8.3",
       },
     },
     "packages/engine": {
-      "name": "@jleelove/ges-engine",
+      "name": "@ges/engine",
       "version": "0.1.0",
       "devDependencies": {
         "typescript": "^5.8.3",
       },
     },
     "packages/renderer": {
-      "name": "@jleelove/ges-renderer",
+      "name": "@ges/renderer",
       "version": "0.1.0",
       "devDependencies": {
         "typescript": "^5.8.3",
@@ -209,11 +209,11 @@
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
 
-    "@jleelove/ges-core": ["@jleelove/ges-core@workspace:packages/core"],
+    "@ges/core": ["@ges/core@workspace:packages/core"],
 
-    "@jleelove/ges-engine": ["@jleelove/ges-engine@workspace:packages/engine"],
+    "@ges/engine": ["@ges/engine@workspace:packages/engine"],
 
-    "@jleelove/ges-renderer": ["@jleelove/ges-renderer@workspace:packages/renderer"],
+    "@ges/renderer": ["@ges/renderer@workspace:packages/renderer"],
 
     "@jridgewell/gen-mapping": ["@jridgewell/gen-mapping@0.3.13", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.0", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA=="],
 

@@ -1,1 +1,1 @@
-export * from "@jleelove/ges-renderer"
+export * from "@ges/renderer"
