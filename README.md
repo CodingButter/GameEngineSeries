@@ -20,7 +20,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 | **2** | Better Foundations & A Simple Renderer | [ep02-better-foundations-and-simple-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep02-better-foundations-and-simple-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
 | **3** | Core & Engine Package | [ep03-core-and-engine-package](https://github.com/CodingButter/GameEngineSeries/tree/ep03-core-and-engine-package) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
 | **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
-| **5** | Component Types & Systems | [ep05-component-types-and-systems](https://github.com/CodingButter/GameEngineSeries/tree/ep05-component-types-and-systems) | Coming Soon |
+| **5** | Editor UI Foundation | [ep05-ui-foundation](https://github.com/CodingButter/GameEngineSeries/tree/ep05-ui-foundation) | Coming Soon |
 
 **Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
