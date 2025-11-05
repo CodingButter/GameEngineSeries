@@ -37,7 +37,7 @@ git clone https://github.com/CodingButter/GameEngineSeries.git
 cd GameEngineSeries
 
 # Checkout this episode's branch
-git checkout ep05-component-types-and-systems
+git checkout ep05-ui-foundation
 
 # Install dependencies
 bun install
@@ -85,7 +85,7 @@ bun run build
 | **2** | Better Foundations & A Simple Renderer | [ep02-better-foundations-and-simple-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep02-better-foundations-and-simple-renderer) |
 | **3** | Core & Engine Package | [ep03-core-and-engine-package](https://github.com/CodingButter/GameEngineSeries/tree/ep03-core-and-engine-package) |
 | **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) |
-| **5** | Component Types & Systems | [ep05-component-types-and-systems](https://github.com/CodingButter/GameEngineSeries/tree/ep05-component-types-and-systems) |
+| **5** | Editor UI Foundation | [ep05-ui-foundation](https://github.com/CodingButter/GameEngineSeries/tree/ep05-ui-foundation) |
 
 **Main Repository:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
 
