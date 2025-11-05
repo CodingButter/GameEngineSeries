@@ -1,142 +1,100 @@
-# 🧩 Built From Scratch: 2D Game Engine (Tutorial Series)
+# Episode 5: Component Types & Systems
 
-### 🎬 Overview
-
-Welcome to the **Built From Scratch: 2D Game Engine** series — a hands-on YouTube course where we build a modular, browser-based 2D game engine step by step.
-
-Each episode focuses on understanding **why** things are built the way they are.  
-No rushed coding, no copy-paste boilerplate — just practical structure, clean logic, and steady progress.
-
-We’re using the **BHVR stack** — **Bun · Hono · Vite · React** — as our foundation.  
-BHVR isn’t the engine; it’s the **development conduit** that keeps everything fast, modular, and connected.
+This branch contains the code from **Episode 5** of the **Built From Scratch: 2D Game Engine** series.
 
 ---
 
-## 🧭 Series Roadmap
+## 📺 Watch This Episode
 
-| Episode | Title | Branch | YouTube |
-|:--:|:--|:--|:--|
-| **1** | Working with Workspaces | [ep01-ch01-ep01-repo-layout-and-scripts](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep01-repo-layout-and-scripts) | [Watch on YouTube](https://youtu.be/xERoxdRW2lE) |
-| **2** | Better Foundations & A Simple Renderer | [ep01-ch01-ep-02-foundations-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep-02-foundations-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
-| **3** | Core & Engine Package | [ep01-ch01-ep03-core-loops-and-state-management](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep03-core-loops-and-state-management) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
-| **4** | Entity Component System | [ep01-ch01-ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
-
-**Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
+**YouTube:** Coming Soon
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+**Channel:** [CodingButter](https://youtube.com/@codingbutter)
 
 ---
 
-## ⚙️ Current Status
+## 🎯 What's Covered in This Episode
 
-**Main** is a landing branch and may differ from per-episode branches.
-As of Episode 4, the series introduces the **Entity Component System (ECS)** architecture that enables flexible, data-driven game objects:
-
-```
-
-editor → core → engine → renderer
-              ↓
-             ecs → world → entities/components/systems
-
-````
-
-- The **renderer** draws frames to the canvas.
-- The **engine** manages timing, delta updates, and control flow.
-- The **ecs** provides the World class for managing entities, components, and systems.
-- The **core** provides a single import surface for all engine modules.
+Episode 5 expands the ECS system with practical components and an editor UI:
+- Building a modular **Editor UI Layout** with resizable panels
+- Creating ToolBar, Hierarchy, Controls, Assets, and Inspector panels
+- Integrating **react-resizable-panels** for flexible editor interface
+- Implementing **GameProvider** for centralized game state management
+- Adding utility functions for editor operations
+- Structuring the editor for scalability and future features
 
 ---
 
-## 🧰 Tech Stack (BHVR)
+## 🚀 Quick Start
 
-| Tool | Role |
-|------|------|
-| **Bun** | Runtime and package manager — ultra-fast workspace management |
-| **Hono** | Lightweight HTTP framework for internal dev APIs |
-| **Vite** | Modern build tool with instant hot reload |
-| **React** | Editor UI and debug overlays |
-| **TypeScript** | Strong typing and interface contracts across packages |
+### Prerequisites
+- [Bun](https://bun.sh/) installed on your system
 
----
-
-## 🛠️ Quick Start
-
-Clone the repo and run the dev environment:
+### Setup & Run
 
 ```bash
+# Clone the repository
 git clone https://github.com/CodingButter/GameEngineSeries.git
 cd GameEngineSeries
-bun install
-bun run dev
-````
 
-This starts the editor and links workspace packages (client/server/shared/packages) using the current main setup.
-Top-level directories you’ll see on **main**: `client/`, `server/`, `shared/`, and `packages/` (renderer lives here; other modules land on episode branches). ([GitHub][1])
+# Checkout this episode's branch
+git checkout ep05-component-types-and-systems
+
+# Install dependencies
+bun install
+
+# Run development server
+bun run dev
+
+# Build for production
+bun run build
+```
 
 ---
 
-## 🧩 Project Structure (main)
+## 📂 Project Structure
 
 ```
 .
 ├─ client/                 # React-based editor/frontend
+│  ├─ src/
+│  │  ├─ components/
+│  │  │  ├─ editor/       # Editor panels (NEW!)
+│  │  │  ├─ icons/        # Icon components (NEW!)
+│  │  │  └─ ui/           # UI components (NEW!)
+│  │  └─ providers/       # Context providers (NEW!)
 ├─ server/                 # Hono server for tooling/APIs
-├─ shared/                 # Shared types & utilities for client/server
+├─ shared/                 # Shared types & utilities
 ├─ packages/
-│  ├─ renderer/            # Canvas 2D renderer (episode 2)
-│  ├─ engine/              # Game loop & timing system (episode 3)
-│  ├─ ecs/                 # Entity Component System (episode 4)
-│  └─ core/                # Unified export surface (episode 3+)
-├─ package.json            # Workspace + scripts
+│  ├─ renderer/            # Canvas 2D renderer
+│  ├─ engine/              # Game loop & timing system
+│  ├─ ecs/                 # Entity Component System
+│  └─ core/                # Unified export surface
+├─ package.json            # Workspace configuration
 ├─ bun.lock
 ├─ tsconfig.json
 └─ turbo.json
 ```
 
-This structure is visible at the repo root on main. ([GitHub][1])
-
 ---
 
-## 🧠 Series Philosophy
+## 🔗 Series Navigation
 
-> “Focus on the structure. The features come later.”
+| Episode | Title | Branch |
+|:--:|:--|:--|
+| **1** | Working with Workspaces | [ep01-working-with-workspaces](https://github.com/CodingButter/GameEngineSeries/tree/ep01-working-with-workspaces) |
+| **2** | Better Foundations & A Simple Renderer | [ep02-better-foundations-and-simple-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep02-better-foundations-and-simple-renderer) |
+| **3** | Core & Engine Package | [ep03-core-and-engine-package](https://github.com/CodingButter/GameEngineSeries/tree/ep03-core-and-engine-package) |
+| **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) |
+| **5** | Component Types & Systems | [ep05-component-types-and-systems](https://github.com/CodingButter/GameEngineSeries/tree/ep05-component-types-and-systems) |
 
-We’re not optimizing for polish yet. We’re building **a clear foundation** — easy to read, reason about, and extend.
-
-Each episode answers one question:
-
-> *What part of the code does what?*
-
-That’s how we’ll grow this engine into something powerful, understandable, and fun to build.
-
----
-
-## 🛣️ Upcoming Episodes
-
-* **Episode 5:** Component Types & Systems — Transform, Velocity, Sprite components with movement and rendering
-* **Episode 6:** Input System — keyboard and mouse handling for game interaction
-* **Episode 7:** Editor UI Setup — panels, layout, and debugging
-* **Episode 8:** Editor Interaction — input, selection, and live entity visualization
+**Main Repository:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
 
 ---
 
 ## 💬 Feedback & Community
 
-I’ve been coding for over 20 years, and I’m still learning every day.
-This project is about sharing the process — the mistakes, the rewrites, and the small wins.
-
-If you’re following along, **like, share, and subscribe** on YouTube,
-or open an issue on GitHub if you spot something that can be improved.
-
-**Channel:** [CodingButter](https://youtube.com/@codingbutter)
-**Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+If you're following along, **like, share, and subscribe** on YouTube, or open an issue on GitHub if you spot something that can be improved.
 
 ---
 
-### 📄 License
-
-This project and its code are provided for **educational and open-source learning purposes**.
-You’re welcome to fork, remix, and expand it — just keep it open and share what you learn.
-
----
-
-**Main Repo:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
+**Built with the BHVR stack:** Bun · Hono · Vite · React
