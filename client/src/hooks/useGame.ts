@@ -25,7 +25,15 @@ export interface Square {
   shape: Shape;
 }
 
-export function useGame(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
+export interface GameObject {
+  addSquare: (square: Square) => void;
+  fps: string;
+  renderer: Renderer | null;
+}
+
+export function useGame(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>
+): GameObject {
   const worldRef = useRef<World | null>(null);
   const rendererRef = useRef<Renderer | null>(null);
   const engineRef = useRef<Engine | null>(null);
@@ -142,5 +150,5 @@ export function useGame(canvasRef: React.RefObject<HTMLCanvasElement | null>) {
     world.addComponent(entity, "Velocity", velocity);
   };
 
-  return { addSquare, fps };
+  return { addSquare, fps, renderer: rendererRef.current };
 }
