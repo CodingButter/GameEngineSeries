@@ -20,6 +20,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 | **2** | Better Foundations & A Simple Renderer | [ep01-ch01-ep-02-foundations-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep-02-foundations-renderer) | [Watch on YouTube](https://youtu.be/oHxFAvvBBtY) |
 | **3** | Core & Engine Package | [ep01-ch01-ep03-core-loops-and-state-management](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep03-core-loops-and-state-management) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
 | **4** | Entity Component System | [ep01-ch01-ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
+| **5** | Component Types & Systems | [ep01-ch01-ep05-component-types-and-systems](https://github.com/CodingButter/GameEngineSeries/tree/ep01-ch01-ep05-component-types-and-systems) | Coming Soon |
 
 **Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
@@ -29,7 +30,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 ## ⚙️ Current Status
 
 **Main** is a landing branch and may differ from per-episode branches.
-As of Episode 4, the series introduces the **Entity Component System (ECS)** architecture that enables flexible, data-driven game objects:
+As of Episode 5, the series introduces the **Editor UI Layout** with resizable panels and a modular component-based interface built on top of the **Entity Component System (ECS)** architecture:
 
 ```
 
@@ -112,10 +113,10 @@ That’s how we’ll grow this engine into something powerful, understandable, a
 
 ## 🛣️ Upcoming Episodes
 
-* **Episode 5:** Component Types & Systems — Transform, Velocity, Sprite components with movement and rendering
 * **Episode 6:** Input System — keyboard and mouse handling for game interaction
-* **Episode 7:** Editor UI Setup — panels, layout, and debugging
+* **Episode 7:** Advanced Editor Features — debugging tools, property inspection, and entity management
 * **Episode 8:** Editor Interaction — input, selection, and live entity visualization
+* **Episode 9:** Asset Management — sprite loading, texture atlases, and resource optimization
 
 ---
 
