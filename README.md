@@ -1,129 +1,89 @@
-# GameEngineSeries
+# Episode 1: Working with Workspaces
 
-Build a **game engine + editor** in the open—using **Bun · React · TypeScript · Tailwind** and a home-rolled **ECS**—in tidy, 15-minute steps. Old-school craftsmanship, modern tools.
-
----
-
-## What this project is
-
-A public, learn-by-building series that shows how to design and ship:
-
-- a **runtime engine** (loop, ECS, rendering, assets, physics-lite),
-- a **creator-friendly editor** (panels, hierarchy, inspector, gizmos),
-- a small **vertical-slice game** that proves the stack.
-
-We document decisions, keep commits small, and leave clear checkpoints so you can jump in anywhere.
+This branch contains the code from **Episode 1** of the **Built From Scratch: 2D Game Engine** series.
 
 ---
 
-## Goals
+## 📺 Watch This Episode
 
-- **Clarity over cleverness:** readable code, explicit tradeoffs.
-- **Production posture:** DX, linting, type safety, reproducible builds.
-- **Authoring first:** editor features that make creation pleasant.
-- **Pedagogy:** every 15-min episode lands a working artifact.
-- **Traceability:** viewers can browse the exact code shown on screen.
+**YouTube:** [Watch Episode 1](https://youtu.be/xERoxdRW2lE)
+**Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
+**Channel:** [CodingButter](https://youtube.com/@codingbutter)
 
 ---
 
-## Who this is for
+## 🎯 What's Covered in This Episode
 
-- **Web/game devs** who want to understand engines (not just use them).
-- **Educators & students** who prefer real repositories over slides.
-- **Toolsmiths** who like editors, pipelines, and creator UX.
-- Anyone who enjoys tidy folders and crisp commits. (You’re our people.)
-
----
-
-## What you’ll build (high level)
-
-- **Core loop & input** → deterministic updates, input mapping
-- **ECS backbone** → entities, components, systems, queries
-- **Scene & transforms** → hierarchy, local/world math, gizmos
-- **Rendering** → Canvas2D first; WebGL/WebGPU on-ramp optional
-- **Assets** → manifests, cache-busting, async loading
-- **Physics-lite** → AABB collisions, triggers
-- **Editor** → dockable panels, hierarchy, inspector, undo/redo
-- **Serialization** → scenes, prefabs, migrations
-- **UX polish** → UI/HUD, audio/events, particles/tweens
-- **Ship it** → packaging, saves, vertical slice, docs
+Episode 1 introduces the foundation of our project:
+- Setting up a Bun workspace with multiple packages
+- Configuring the monorepo structure
+- Understanding workspace dependencies
+- Basic project layout and scripts
+- Development workflow setup
 
 ---
 
-## How the repository is organized
+## 🚀 Quick Start
 
-```
-06_CODE/                 # Bun workspace (apps, packages, tooling, examples)
-04_SERIES_CONTENT/       # Epics → Chapters → Episodes (media, notes, code worktrees)
+### Prerequisites
+- [Bun](https://bun.sh/) installed on your system
+
+### Setup & Run
+
+```bash
+# Clone the repository
+git clone https://github.com/CodingButter/GameEngineSeries.git
+cd GameEngineSeries
+
+# Checkout this episode's branch
+git checkout ep01-working-with-workspaces
+
+# Install dependencies
+bun install
+
+# Run development server
+bun run dev
+
+# Build for production
+bun run build
 ```
 
-- **apps/** → `editor`, `game`
-- **packages/** → `ecs`, `engine`, `utils`, shared `config`
-- **tooling/** → helper scripts (e.g., worktree creator)
-
 ---
 
-## Branches & tags (how to find code from a specific video)
-
-Every episode gets:
-
-- **Branch:** `epNN-chMM-epPP-<episode-slug>`
-
-  - Example: `ep01-ch01-ep01-repo-layout-scripts`
-
-- **Tag (immutable snapshot when the video ships):** `pub-epNN-chMM-epPP`
-
-  - Example: `pub-ep01-ch01-ep01`
-
-### Find the branch on GitHub
-
-- Click the branch dropdown and search `epNN-chMM-epPP` (e.g., `ep05-ch02-ep01`).
-- Or visit `/branches/all` and filter by `epNN-`.
-
-### Why both branch _and_ tag?
-
-- **Branch** = living line for that episode (we may fix typos).
-- **Tag** = frozen copy that exactly matches what you saw.
-  We link both in each video description so you can choose certainty (tag) or convenience (branch).
-
-### Local worktrees (for contributors/viewers who clone)
-
-We keep a **worktree** of the code inside each episode folder so the repo doubles as a browsable time capsule:
+## 📂 Project Structure
 
 ```
-04_SERIES_CONTENT/.../EPISODES/EPPP-<slug>/code/   # a git worktree attached to that episode branch
+.
+├─ client/                 # React-based editor/frontend
+├─ server/                 # Hono server for tooling/APIs
+├─ shared/                 # Shared types & utilities
+├─ packages/               # Core engine packages
+├─ package.json            # Workspace configuration
+├─ bun.lock
+├─ tsconfig.json
+└─ turbo.json
 ```
 
-You don’t need these to browse on GitHub—but they’re handy offline.
+---
+
+## 🔗 Series Navigation
+
+| Episode | Title | Branch |
+|:--:|:--|:--|
+| **1** | Working with Workspaces | [ep01-working-with-workspaces](https://github.com/CodingButter/GameEngineSeries/tree/ep01-working-with-workspaces) |
+| **2** | Better Foundations & A Simple Renderer | [ep02-better-foundations-and-simple-renderer](https://github.com/CodingButter/GameEngineSeries/tree/ep02-better-foundations-and-simple-renderer) |
+| **3** | Core & Engine Package | [ep03-core-and-engine-package](https://github.com/CodingButter/GameEngineSeries/tree/ep03-core-and-engine-package) |
+| **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) |
+| **5** | Component Types & Systems | [ep05-component-types-and-systems](https://github.com/CodingButter/GameEngineSeries/tree/ep05-component-types-and-systems) |
+
+**Main Repository:** [github.com/CodingButter/GameEngineSeries](https://github.com/CodingButter/GameEngineSeries)
 
 ---
 
-## Following along (pick your style)
+## 💬 Feedback & Community
 
-- **Binge the playlist** → jump branch to branch as you watch.
-- **Hands-on** → check out the episode branch, run `bun i`, `bun run dev:editor`.
-- **Skim by topic** → explore epics and chapters; each ends with a working demo.
+If you're following along, **like, share, and subscribe** on YouTube, or open an issue on GitHub if you spot something that can be improved.
 
 ---
 
-## Values & vibe
-
-- **Traditional craft:** measure twice, cut once, commit clearly.
-- **Forward-looking:** Bun workspaces, modern TS, clean editor UX.
-- **Ship small, ship often:** 15 minutes per step; progress compounds.
-
----
-
-## Contributing
-
-Issues and PRs welcome. If your change relates to a specific video, target the matching **episode branch**; otherwise target `main`. Keep commits narrative and test the basics.
-
----
-
-## License
-
-Code is MIT unless noted. Media (music/fonts/footage) carries its own licenses in `01_GLOBAL/legal/`.
-
----
-
-If it squeaks, we oil it. If it wobbles, we shim it. If it ships—**we party.**
+**Built with the BHVR stack:** Bun · Hono · Vite · React
