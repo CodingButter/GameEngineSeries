@@ -1,4 +1,4 @@
-# Episode 5: Component Types & Systems
+# Episode 5: Editor UI Foundation
 
 This branch contains the code from **Episode 5** of the **Built From Scratch: 2D Game Engine** series.
 
@@ -6,7 +6,7 @@ This branch contains the code from **Episode 5** of the **Built From Scratch: 2D
 
 ## 📺 Watch This Episode
 
-**YouTube:** Coming Soon
+**YouTube:** [Episode 5: Editor UI Foundation](https://www.youtube.com/watch?v=BqMyIVvVH6Y)
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
 **Channel:** [CodingButter](https://youtube.com/@codingbutter)
 
@@ -14,12 +14,12 @@ This branch contains the code from **Episode 5** of the **Built From Scratch: 2D
 
 ## 🎯 What's Covered in This Episode
 
-Episode 5 expands the ECS system with practical components and an editor UI:
+Episode 5 builds out the editor interface with a professional UI layout:
 - Building a modular **Editor UI Layout** with resizable panels
 - Creating ToolBar, Hierarchy, Controls, Assets, and Inspector panels
 - Integrating **react-resizable-panels** for flexible editor interface
 - Implementing **GameProvider** for centralized game state management
-- Adding utility functions for editor operations
+- Building **ResizeHandle** component for panel dividers
 - Structuring the editor for scalability and future features
 
 ---
