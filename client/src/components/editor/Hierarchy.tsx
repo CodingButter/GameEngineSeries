@@ -5,9 +5,10 @@ import type { Square } from "@/hooks/useGame";
 import { generateRandomHexColor } from "@/lib/utils";
 
 const Hierarchy = () => {
-  const { addSquare, renderer } = useGameContext();
+  const { addSquare, rendererRef } = useGameContext();
 
   const handleAddSquare = () => {
+    const renderer = rendererRef.current;
     if (!renderer) return;
     const size = 25 + Math.random() * 50;
     const maxSpeed = 200;
