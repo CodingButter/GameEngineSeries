@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { makeCanvasRenderer, Renderer } from "@ges/core/renderer";
 import { Engine, type EngineProps } from "@ges/core/engine";
 import { World, RenderSystem, UpdateSystem } from "@ges/core/ecs";
@@ -27,8 +27,9 @@ export interface Square {
 
 export interface GameObject {
   addSquare: (square: Square) => void;
-  fps: string;
-  renderer: Renderer | null;
+  rendererRef: React.RefObject<Renderer | null>;
+  worldRef: React.RefObject<World | null>;
+  engineRef: React.RefObject<Engine | null>;
 }
 
 export function useGame(
@@ -37,7 +38,6 @@ export function useGame(
   const worldRef = useRef<World | null>(null);
   const rendererRef = useRef<Renderer | null>(null);
   const engineRef = useRef<Engine | null>(null);
-  const [fps, setFPS] = useState<string>("");
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -121,8 +121,6 @@ export function useGame(
       },
       render: () => {
         world.render();
-
-        setFPS(engine.getFrameRate().toFixed(2));
       },
       desired_frame_rate: 60,
       desired_tick_rate: 240,
@@ -150,5 +148,5 @@ export function useGame(
     world.addComponent(entity, "Velocity", velocity);
   };
 
-  return { addSquare, fps, renderer: rendererRef.current };
+  return { addSquare, rendererRef, worldRef, engineRef };
 }

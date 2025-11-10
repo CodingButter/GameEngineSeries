@@ -6,9 +6,7 @@ export interface ComponentSchema {
   [key: string]: any;
 }
 
-export type ComponentInstance<T extends ComponentSchema = ComponentSchema> = T;
-
-export type ComponentMap = Map<Entity, ComponentInstance>;
+export type ComponentMap = Map<Entity, ComponentSchema>;
 
 export abstract class UpdateSystem {
   abstract update(world: World, dt: number): void;
@@ -16,4 +14,13 @@ export abstract class UpdateSystem {
 
 export abstract class RenderSystem {
   abstract render(world: World): void;
+}
+
+export interface EntityState {
+  id: Entity;
+  components: Record<string, ComponentSchema>;
+}
+
+export interface WorldState {
+  entities: EntityState[];
 }

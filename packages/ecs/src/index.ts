@@ -1,5 +1,11 @@
 export * from "./types";
-import type { Entity, ComponentSchema, ComponentMap } from "./types";
+import type {
+  Entity,
+  ComponentSchema,
+  ComponentMap,
+  WorldState,
+  EntityState,
+} from "./types";
 import { UpdateSystem, RenderSystem } from "./types";
 
 export class World {
@@ -9,8 +15,28 @@ export class World {
   private updateSystems: UpdateSystem[] = [];
   private renderSystems: RenderSystem[] = [];
 
+  private listeners = new Map<string, Set<Function>>();
+
+  public on(event: string, callback: Function): () => void {
+    if (!this.listeners.has(event)) {
+      this.listeners.set(event, new Set());
+    }
+    this.listeners.get(event)!.add(callback);
+
+    return () => {
+      this.listeners.get(event)?.delete(callback);
+    };
+  }
+
+  private emit(event: string, data?: any): void {
+    this.listeners.get(event)?.forEach((callback) => callback(data));
+  }
+
   createEntity(): Entity {
-    return this.nextEntityId++;
+    const id = this.nextEntityId++;
+
+    this.emit("entityCreated", { entityId: id });
+    return id;
   }
 
   registerComponent<T extends ComponentSchema>(name: string): void {
@@ -27,6 +53,12 @@ export class World {
     const compMap = this.components.get(type);
     if (!compMap) throw new Error(`Component '${type}' not registered`);
     compMap.set(entity, props);
+
+    this.emit("componentAdded", {
+      entityId: entity,
+      componentType: type,
+      data: props,
+    });
   }
 
   getComponent<T extends ComponentSchema>(
@@ -34,6 +66,64 @@ export class World {
     type: string
   ): T | undefined {
     return this.components.get(type)?.get(entity) as T;
+  }
+
+  public getEntities(): Entity[] {
+    const entities = new Set<Entity>();
+
+    this.components.forEach((compMap) => {
+      compMap.forEach((_, entity) => entities.add(entity));
+    });
+    return Array.from(entities).sort((a, b) => a - b);
+  }
+
+  public getComponents(entity: Entity): Record<string, ComponentSchema> {
+    const result: Record<string, ComponentSchema> = {};
+    this.components.forEach((compMap, componentType) => {
+      const comp = compMap.get(entity);
+      if (comp) {
+        result[componentType] = comp;
+      }
+    });
+    return result;
+  }
+
+  public getState(): WorldState {
+    const entities: EntityState[] = this.getEntities().map((id) => ({
+      id,
+      components: this.getComponents(id),
+    }));
+
+    return { entities };
+  }
+
+  public setState(state: WorldState): void {
+    this.components.forEach((map) => map.clear());
+    this.nextEntityId = 1;
+
+    state.entities.forEach(({ id, components }) => {
+      if (id >= this.nextEntityId) {
+        this.nextEntityId = id + 1;
+      }
+
+      Object.entries(components).forEach(([type, data]) => {
+        const compMap = this.components.get(type);
+
+        if (compMap) {
+          compMap.set(id, data);
+        }
+      });
+
+      this.emit("worldReset", { entities: this.getEntities() });
+    });
+  }
+
+  public clear(): void {
+    const entityIds = this.getEntities();
+    this.components.forEach((map) => map.clear());
+    this.nextEntityId = 1;
+
+    this.emit("worldCleared", { removedEntities: entityIds });
   }
 
   *query(...types: string[]): Generator<[Entity, Record<string, any>]> {
@@ -68,14 +158,6 @@ export class World {
       if (hasAll) {
         yield [entity, data];
       }
-
-      /* Example
-
-      for (const [e, { Transform:transform,Velocity:velcoity}] of world.query("Transform","Velocity")){
-        //move stuff
-      }
-
-    */
     }
   }
 
