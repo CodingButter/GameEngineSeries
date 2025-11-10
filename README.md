@@ -21,6 +21,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 | **3** | Core & Engine Package | [ep03-core-and-engine-package](https://github.com/CodingButter/GameEngineSeries/tree/ep03-core-and-engine-package) | [Watch on YouTube](https://youtu.be/cFh5zKOjXSY) |
 | **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
 | **5** | Editor UI Foundation | [ep05-ui-foundation](https://github.com/CodingButter/GameEngineSeries/tree/ep05-ui-foundation) | [Watch on YouTube](https://www.youtube.com/watch?v=BqMyIVvVH6Y) |
+| **6** | World State Management & Events | [ep06-world-state-management-events](https://github.com/CodingButter/GameEngineSeries/tree/ep06-world-state-management-events) | [Watch on YouTube](https://youtu.be/kw3Llwy8PoY) |
 
 **Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
@@ -113,10 +114,10 @@ That’s how we’ll grow this engine into something powerful, understandable, a
 
 ## 🛣️ Upcoming Episodes
 
-* **Episode 6:** Input System — keyboard and mouse handling for game interaction
-* **Episode 7:** Advanced Editor Features — debugging tools, property inspection, and entity management
-* **Episode 8:** Editor Interaction — input, selection, and live entity visualization
-* **Episode 9:** Asset Management — sprite loading, texture atlases, and resource optimization
+* **Episode 7:** Input System — keyboard and mouse handling for game interaction
+* **Episode 8:** Advanced Editor Features — debugging tools, property inspection, and entity management
+* **Episode 9:** Editor Interaction — input, selection, and live entity visualization
+* **Episode 10:** Asset Management — sprite loading, texture atlases, and resource optimization
 
 ---
 
