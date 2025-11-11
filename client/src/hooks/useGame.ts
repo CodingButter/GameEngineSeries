@@ -1,23 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { SetStateAction, useEffect, useRef, useState } from "react";
 import { makeCanvasRenderer, Renderer } from "@ges/core/renderer";
 import { Engine, type EngineProps } from "@ges/core/engine";
-import { World, RenderSystem, UpdateSystem } from "@ges/core/ecs";
-
-interface Transform {
-  x: number;
-  y: number;
-}
-
-interface Shape {
-  width: number;
-  height: number;
-  color: string;
-}
-
-interface Velocity {
-  vx: number;
-  vy: number;
-}
+import { World, RenderSystem, UpdateSystem, type Entity } from "@ges/core/ecs";
+import { type Transform, type Velocity, type Shape, Base } from "@/types";
 
 export interface Square {
   transform: Transform;
@@ -30,6 +15,9 @@ export interface GameObject {
   rendererRef: React.RefObject<Renderer | null>;
   worldRef: React.RefObject<World | null>;
   engineRef: React.RefObject<Engine | null>;
+  setSelectedEntity: React.Dispatch<SetStateAction<Entity | undefined>>;
+  selectedEntity: Entity | undefined;
+  entities: Entity[];
 }
 
 export function useGame(
@@ -38,6 +26,10 @@ export function useGame(
   const worldRef = useRef<World | null>(null);
   const rendererRef = useRef<Renderer | null>(null);
   const engineRef = useRef<Engine | null>(null);
+
+  //Shared States
+  const [entities, setEntities] = useState<Entity[]>([]);
+  const [selectedEntity, setSelectedEntity] = useState<Entity>();
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -51,6 +43,7 @@ export function useGame(
     rendererRef.current = renderer;
 
     const world = new World();
+    world.registerComponent<Base>("Base");
     world.registerComponent<Transform>("Transform");
     world.registerComponent<Shape>("Shape");
     world.registerComponent<Velocity>("Velocity");
@@ -130,8 +123,33 @@ export function useGame(
     engineRef.current = engine;
     engine.start();
 
+    // add Listeners
+    const unsubscribeEntityCreated = world.on(
+      "entityCreated",
+      ({ entityId }: { entityId: Entity }) => {
+        setEntities((prev) => [...prev, entityId]);
+      }
+    );
+
+    // Listen for world reset
+    const unsubscribeWorldReset = world.on(
+      "worldReset",
+      ({ entities: newEntities }: { entities: Entity[] }) => {
+        setEntities(newEntities);
+      }
+    );
+
+    // Listen for world cleared
+    const unsubscribeWorldCleared = world.on("worldCleared", () => {
+      setEntities([]);
+      setSelectedEntity(undefined);
+    });
+
     return () => {
       engine.stop?.();
+      unsubscribeEntityCreated();
+      unsubscribeWorldReset();
+      unsubscribeWorldCleared();
     };
   }, [canvasRef]);
 
@@ -143,10 +161,22 @@ export function useGame(
     }
 
     const entity = world.createEntity();
+    world.addComponent(entity, "Base", {
+      name: `Entity ${entity}`,
+      id: entity,
+    });
     world.addComponent(entity, "Transform", transform);
     world.addComponent(entity, "Shape", shape);
     world.addComponent(entity, "Velocity", velocity);
   };
 
-  return { addSquare, rendererRef, worldRef, engineRef };
+  return {
+    addSquare,
+    rendererRef,
+    worldRef,
+    engineRef,
+    entities,
+    selectedEntity,
+    setSelectedEntity,
+  };
 }
