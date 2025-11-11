@@ -22,6 +22,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 | **4** | Entity Component System | [ep04-entity-component-system](https://github.com/CodingButter/GameEngineSeries/tree/ep04-entity-component-system) | [Watch on YouTube](https://youtu.be/n4ewWlgmNd8) |
 | **5** | Editor UI Foundation | [ep05-ui-foundation](https://github.com/CodingButter/GameEngineSeries/tree/ep05-ui-foundation) | [Watch on YouTube](https://www.youtube.com/watch?v=BqMyIVvVH6Y) |
 | **6** | World State Management & Events | [ep06-world-state-management-events](https://github.com/CodingButter/GameEngineSeries/tree/ep06-world-state-management-events) | [Watch on YouTube](https://youtu.be/kw3Llwy8PoY) |
+| **7** | Interactive Hierarchy & Selection | [ep07-interactive-hierarchy-selection](https://github.com/CodingButter/GameEngineSeries/tree/ep07-interactive-hierarchy-selection) | [Watch on YouTube](https://youtu.be/naoVTzhT_0E) |
 
 **Channel:** [CodingButter on YouTube](https://youtube.com/@codingbutter)  
 **Full Playlist:** [Built From Scratch: 2D Game Engine](https://www.youtube.com/playlist?list=PLX96T4AVTGy66MoIE9zt5HfErYOxFvWlf)
@@ -31,7 +32,7 @@ BHVR isn’t the engine; it’s the **development conduit** that keeps everythin
 ## ⚙️ Current Status
 
 **Main** is a landing branch and may differ from per-episode branches.
-As of Episode 5, the series introduces the **Editor UI Layout** with resizable panels and a modular component-based interface built on top of the **Entity Component System (ECS)** architecture:
+As of Episode 7, the series introduces **Interactive Hierarchy & Selection** with live entity lists and selection state, built on top of the event-driven **Entity Component System (ECS)** architecture:
 
 ```
 
@@ -114,10 +115,10 @@ That’s how we’ll grow this engine into something powerful, understandable, a
 
 ## 🛣️ Upcoming Episodes
 
-* **Episode 7:** Input System — keyboard and mouse handling for game interaction
-* **Episode 8:** Advanced Editor Features — debugging tools, property inspection, and entity management
-* **Episode 9:** Editor Interaction — input, selection, and live entity visualization
-* **Episode 10:** Asset Management — sprite loading, texture atlases, and resource optimization
+* **Episode 8:** Inspector Panel — property editing and real-time component updates
+* **Episode 9:** Input System — keyboard and mouse handling for game interaction
+* **Episode 10:** Canvas Selection & Manipulation — visual entity selection and drag-to-move
+* **Episode 11:** Asset Management — sprite loading, texture atlases, and resource optimization
 
 ---
 
